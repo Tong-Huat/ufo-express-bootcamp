@@ -18,7 +18,7 @@
   <nav class="nav">
     <a class="nav-link active" href="/">UFO Sightings Index</a>
     <a class="nav-link" href="/submitsighting">Submit Sightings</a>
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="/shapes">Sightings by Shape</a>
   </nav>
   <h1> Sighting Submission</h1>
   <div class="container">
@@ -41,7 +41,14 @@
       </div>
       <div class="col-md-12 mb-3">
         <label for="shape" class="form-label">Shape</label>
-        <input type="text" class="form-control" name="shape" placeholder="Sphere">
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>Sphere</option>
+          <option>Fireball</option>
+          <option>Disk</option>
+          <option>Circle</option>
+          <option>Cigar</option>
+          <option>Unknown</option>
+        </select>
       </div>
       <div class="col-md-12 mb-3">
         <label for="duration" class="form-label">Duration</label>

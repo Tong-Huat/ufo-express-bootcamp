@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable max-len */
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 import express, { request, response } from 'express';
@@ -52,6 +54,7 @@ const renderSightingSubmission = (request, response) => {
   response.render('submitsighting');
 };
 
+// CB to render page for editing current data
 const renderEditPage = (request, response) => {
   // retrieve selected sighting from DB and render it
   read('data.json', (err, data) => {
@@ -89,6 +92,28 @@ const deleteSighting = (request, response) => {
   });
 };
 
+// CB to render list of shapes in sightings
+const listOfShapesSighted = (request, response) => {
+  read('data.json', (err, data) => {
+    const { sightings } = data;
+    // filter out the unique shapes in the DB
+    const listOfShape = [...new Set(sightings.map((item) => item.shape))];
+    // convert array of shapes back to obj to pas to shapelist.ejs
+    const listOfShapeObj = { listOfShape };
+    response.render('shapelist', listOfShapeObj);
+  });
+};
+
+const sortSightingByShapes = (request, response) => {
+  let results = [];
+  read('data.json', (err, data) => {
+    const { sightings } = data;
+    const { shape } = request.params;
+    results = sightings.filter((sighting) => sighting.shape.toLowerCase() === shape);
+    let resultsObj = { results };
+    response.render('sightingsbyshape', resultsObj);
+  });
+};
 app.get('/', getSightingsIndex);
 app.get('/sighting/:index', handleSightingRequest);
 app.get('/submitsighting', renderSightingSubmission);
@@ -96,4 +121,6 @@ app.post('/sighting', addSightingSubmission);
 app.put('/sighting/:index', editPage);
 app.get('/sighting/:index/edit', renderEditPage);
 app.delete('/sighting/:index', deleteSighting);
+app.get('/shapes', listOfShapesSighted);
+app.get('/shapes/:shape', sortSightingByShapes);
 app.listen(3004);
