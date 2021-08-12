@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Sighting Submission</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sighting">Submit Sighting</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <form action="/sighting" method="POST">
+      <div class="col-md-12 mb-3">
+        <label for="text" class="form-label">Text</label>
+        <textarea class="form-control" name="text" rows="3"></textarea>
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="date-time" class="form-label">Date & Time</label>
+        <input type="datetime-local" class="form-control" name="date_time">
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="city" class="form-label">City</label>
+        <input type="text" class="form-control" name="city" placeholder="Mountain Home">
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="state" class="form-label">State</label>
+        <input type="text" class="form-control" name="state" placeholder="Idaho">
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="shape" class="form-label">Shape</label>
+        <input type="text" class="form-control" name="shape" placeholder="Sphere">
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="duration" class="form-label">Duration</label>
+        <input type="text" class="form-control" name="duration" placeholder="2 mins">
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="summary" class="form-label">Summary</label>
+        <textarea class="form-control" name="summary" rows="3"></textarea>
+      </div>
+      <div class="col-md-12">
+        <input type="submit" value="Submit">
+      </div>
+      <div class="col-md-12">
+        <input type="reset">
+      </div>
+    </form>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
