@@ -1,5 +1,8 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 import express, { request, response } from 'express';
 import methodOverride from 'method-override';
+// eslint-disable-next-line import/no-unresolved
 import { read, add, write } from './jsonFileStorage.js';
 
 const app = express();
@@ -11,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 // CB for all UFO sightings & render index page
-const handleIncomingRequest = (request, response) => {
+const getSightingsIndex = (request, response) => {
   read('data.json', (err, data) => {
     console.log(data.sightings.length);
     response.render('index', data);
@@ -73,7 +76,7 @@ const editPage = (request, response) => {
   });
 };
 
-app.get('/', handleIncomingRequest);
+app.get('/', getSightingsIndex);
 app.get('/sighting/:index', handleSightingRequest);
 app.get('/sighting', renderSightingSubmission);
 app.post('/sighting', addSightingSubmission);
