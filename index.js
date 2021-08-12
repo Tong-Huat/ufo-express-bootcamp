@@ -49,7 +49,7 @@ const addSightingSubmission = (request, response) => {
 
 // CB to render sighting submission page
 const renderSightingSubmission = (request, response) => {
-  response.render('sighting');
+  response.render('submitsighting');
 };
 
 const renderEditPage = (request, response) => {
@@ -65,6 +65,7 @@ const renderEditPage = (request, response) => {
   });
 };
 
+// CB to edit page and redirect to newly edited page
 const editPage = (request, response) => {
   const { index } = request.params;
   read('data.json', (err, data) => {
@@ -76,10 +77,23 @@ const editPage = (request, response) => {
   });
 };
 
+// CB to del sighting
+const deleteSighting = (request, response) => {
+  // Remove element from DB at given index
+  const { index } = request.params;
+  read('data.json', (err, data) => {
+    data.sightings.splice(index, 1);
+    write('data.json', data, (err) => {
+      response.redirect('/');
+    });
+  });
+};
+
 app.get('/', getSightingsIndex);
 app.get('/sighting/:index', handleSightingRequest);
-app.get('/sighting', renderSightingSubmission);
+app.get('/submitsighting', renderSightingSubmission);
 app.post('/sighting', addSightingSubmission);
 app.put('/sighting/:index', editPage);
 app.get('/sighting/:index/edit', renderEditPage);
+app.delete('/sighting/:index', deleteSighting);
 app.listen(3004);
