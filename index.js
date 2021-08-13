@@ -27,7 +27,7 @@ const getSightingsIndex = (request, response) => {
 const handleSightingRequest = (request, response) => {
   read('data.json', (err, data) => {
     const { index } = request.params;
-    const sighting = data.sightings[index];
+    const sighting = data.sightings[index - 1];
     console.log(index);
     //  only 1 obj(sightings[index]) is parsed to sightings.ejs
     response.render('singlesighting', sighting);
