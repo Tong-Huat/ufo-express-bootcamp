@@ -20,18 +20,17 @@
     <a class="nav-link" href="/shapes">Sightings by Shape</a>
   </nav>
   <h1>Sighting Shapes</h1>
-  <ul>
-    <!-- Create an <li> element for each shape in shapes -->
-    <% for (let i=0; i < listOfShape.length; i +=1) {%>
-      <li>
-        <a href="<%= `/shapes/${listOfShape[i].toLowerCase()}` %> ">
-          <%= listOfShape[i] %>
-        </a>
-      </li>
-      <br>
 
+
+  <div class="list-group">
+    <% for (let i=0; i < listOfShape.length; i +=1) {%>
+      <a href="<%= `/shapes/${listOfShape[i].toLowerCase()}` %>" class="list-group-item list-group-item-action active"
+        aria-current="true">
+        <%= listOfShape[i] %>
+      </a>
       <% }; %>
-  </ul>
+
+  </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
