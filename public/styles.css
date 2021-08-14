@@ -38,6 +38,20 @@ body > .nav {
 
 .list-group {
   max-width: 250px;
+  margin: auto;
+}
+
+h1 {
+  padding: 30px;
+}
+
+.shape-text {
+  text-align: justify;
+}
+
+.table {
+  width: 80%;
+  margin: auto;
 }
 
 @media screen and (max-width: 576px) {

@@ -59,7 +59,7 @@ const renderEditPage = (request, response) => {
   // retrieve selected sighting from DB and render it
   read('data.json', (err, data) => {
     const { index } = request.params;
-    const sighting = data.sightings[index];
+    const sighting = data.sightings[index - 1];
     // Pass the sighting index to edit form for put request URL
     sighting.index = index;
     // convert sighting back to obj to be rendered in ejs
@@ -97,7 +97,7 @@ const listOfShapesSighted = (request, response) => {
   read('data.json', (err, data) => {
     const { sightings } = data;
     // filter out the unique shapes in the DB
-    const listOfShape = [...new Set(sightings.map((item) => item.shape))];
+    const listOfShape = [...new Set(sightings.map((item) => item.shape))].sort();
     // convert array of shapes back to obj to pas to shapelist.ejs
     const listOfShapeObj = { listOfShape };
     response.render('shapelist', listOfShapeObj);
