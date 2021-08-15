@@ -44,7 +44,7 @@ const addSightingSubmission = (request, response) => {
   });
   // redirect to newly created sighting
   read('data.json', (err, data) => {
-    const index = data.sightings.length;
+    const index = data.sightings.length + 1;
     response.redirect(`/sighting/${index}`);
   });
 };
@@ -108,10 +108,13 @@ const sortSightingByShapes = (request, response) => {
   let results = [];
   read('data.json', (err, data) => {
     const { sightings } = data;
+    console.log('data: ', data);
+    // console.log('sightings: ', sightings);
     const { shape } = request.params;
     results = sightings.filter((sighting) => sighting.shape.toLowerCase() === shape);
     let resultsObj = { results };
-    response.render('sightingsbyshape', resultsObj);
+    // console.log('results: ', results);
+    response.render('copysightingsbyshape', { data, resultsObj });
   });
 };
 app.get('/', getSightingsIndex);

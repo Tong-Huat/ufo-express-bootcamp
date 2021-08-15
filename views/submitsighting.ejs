@@ -2,40 +2,44 @@
   <h1> Sighting Submission</h1>
   <div class="container">
     <form action="/sighting" method="POST">
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="text" class="form-label">Text</label>
         <textarea class="form-control" name="text" rows="3"></textarea>
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="date-time" class="form-label">Date & Time</label>
         <input type="datetime-local" class="form-control" name="date_time">
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="city" class="form-label">City</label>
         <input type="text" class="form-control" name="city" placeholder="Mountain Home">
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="state" class="form-label">State</label>
         <input type="text" class="form-control" name="state" placeholder="Idaho">
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="shape" class="form-label">Shape</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option>Sphere</option>
-          <option>Fireball</option>
-          <option>Disk</option>
-          <option>Circle</option>
-          <option>Cigar</option>
-          <option>Unknown</option>
+        <select class="form-control" id="shape" name="shape">
+          <option value="Sphere" selected>Sphere</option>
+          <option value="Fireball">Fireball</option>
+          <option value="Disk">Disk</option>
+          <option value="Circle">Circle</option>
+          <option value="Cigar">Cigar</option>
+          <option value="Unknown">Unknown</option>
         </select>
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="duration" class="form-label">Duration</label>
         <input type="text" class="form-control" name="duration" placeholder="2 mins">
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="summary" class="form-label">Summary</label>
         <textarea class="form-control" name="summary" rows="3"></textarea>
+      </div>
+      <div class="col-md-12 mb-3 submit-label">
+        <label for="time_submitted" class="form-label">Date/Time</label>
+        <input type="text" class="form-control" name="time_submitted" value="<%= `${Date()}` %>  ">
       </div>
       <div class="col-md-12">
         <input type="submit" value="Submit">

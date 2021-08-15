@@ -16,16 +16,35 @@ body {
   background-color: papayawhip;
   margin: 0 auto;
   text-align: center;
+  background-image: url("./img/et.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body > .nav {
   width: 100%;
   justify-content: center;
   align-items: center;
+  background-image: url("./img/ufo-bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav-link {
+  color: aliceblue;
 }
 
 .table {
   width: 100%;
+}
+
+.theader {
+  color: aliceblue;
+}
+
+.tdata > a,
+.shape-report {
+  color: antiquewhite;
 }
 
 .bd-placeholder-img {
@@ -54,6 +73,13 @@ h1 {
   margin: auto;
 }
 
+.copyright {
+  margin-top: 10rem;
+}
+
+.submit-label {
+  text-align: left;
+}
 @media screen and (max-width: 576px) {
   .nav {
     flex-direction: column;

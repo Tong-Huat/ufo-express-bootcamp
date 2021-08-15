@@ -7,17 +7,16 @@
         <th scope="col">Report</th>
         <th scope="col">Summary</th>
         <th scope="col" colspan="2">Actions</th>
-        <!-- <th scope="col">Edit</th> -->
       </tr>
     </thead>
     <tbody>
       <!-- Create an row for each sighting -->
       <% for (let i=0; i < sightings.length; i +=1) {%>
         <tr>
-          <th scope="row">
+          <th scope="row" class="theader">
             <%= i +1 %>
           </th>
-          <td>
+          <td class="tdata">
             <a href="<%= `/sighting/${i + 1}` %>">
               <%= sightings[i].summary %>
             </a>
