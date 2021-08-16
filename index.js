@@ -73,7 +73,7 @@ const renderEditPage = (request, response) => {
     // convert sighting back to obj to be rendered in ejs
     const ejsData = { sighting };
     // if (index <= data.sightings.length && index > 0) {
-    //   response.render('edit', ejsData);
+    response.render('edit', ejsData);
     // } else {
     //   response.status(400).send('Invalid Sightings');
     // }
