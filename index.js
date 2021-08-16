@@ -7,9 +7,6 @@ import methodOverride from 'method-override';
 // eslint-disable-next-line import/no-unresolved
 import { read, add, write } from './jsonFileStorage.js';
 
-// const bodyParser = require('body-parser');
-// const { check, validationResult } = require('express-validator');
-
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -44,7 +41,7 @@ const handleSightingRequest = (request, response) => {
 
 // CB to handle addition of sighting
 const addSightingSubmission = (request, response) => {
-  // Add new sighting data in request.body to sightings array in data.json.
+// Add new sighting data in request.body to sightings array in data.json.
   add('data.json', 'sightings', request.body, (err) => {
     if (err) {
       response.status(500).send('DB write error.');
@@ -73,7 +70,11 @@ const renderEditPage = (request, response) => {
     sighting.index = index;
     // convert sighting back to obj to be rendered in ejs
     const ejsData = { sighting };
-    response.render('edit', ejsData);
+    // if (index <= data.sightings.length && index > 0) {
+    //   response.render('edit', ejsData);
+    // } else {
+    //   response.status(400).send('Invalid Sightings');
+    // }
   });
 };
 
@@ -125,11 +126,18 @@ const sortSightingByShapes = (request, response) => {
     let obj = { };
     // pass different sets of data into obj
     obj.results = results;
-    // obj.sightings = sightings;
-    // console.log('results: ', results);
+    console.log('shape: ', shape);
+    console.log('results: ', results);
+    // for (let i = 0; i < sightings.length; i += 1) {
+    //   if (sightings[i].shape.match(shape)) {
     response.render('sightingsbyshape', { obj, sightings });
+  //     } else {
+  //       response.status(400).send('Invalid Shape');
+  //     }
+  //   }
   });
 };
+
 app.get('/', getSightingsIndex);
 app.get('/sighting/:index', handleSightingRequest);
 app.get('/submitsighting', renderSightingSubmission);
