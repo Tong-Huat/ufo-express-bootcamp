@@ -34,6 +34,11 @@ body > .nav {
   color: aliceblue;
 }
 
+.nav-link:hover {
+  color: beige;
+  font-weight: bold;
+}
+
 .table {
   width: 100%;
 }
@@ -41,7 +46,9 @@ body > .nav {
 .theader {
   color: aliceblue;
 }
-
+.thead {
+  color: aliceblue;
+}
 .tdata > a,
 .shape-report {
   color: antiquewhite;
@@ -58,10 +65,13 @@ body > .nav {
 .list-group {
   max-width: 250px;
   margin: auto;
+  opacity: 0.7;
+  color: red;
 }
 
 h1 {
   padding: 30px;
+  color: cyan;
 }
 
 .shape-text {
@@ -79,6 +89,7 @@ h1 {
 
 .submit-label {
   text-align: left;
+  color: blanchedalmond;
 }
 @media screen and (max-width: 576px) {
   .nav {

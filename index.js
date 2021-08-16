@@ -7,6 +7,9 @@ import methodOverride from 'method-override';
 // eslint-disable-next-line import/no-unresolved
 import { read, add, write } from './jsonFileStorage.js';
 
+// const bodyParser = require('body-parser');
+// const { check, validationResult } = require('express-validator');
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -29,14 +32,19 @@ const handleSightingRequest = (request, response) => {
     const { index } = request.params;
     const sighting = data.sightings[index - 1];
     console.log(index);
-    //  only 1 obj(sightings[index]) is parsed to sightings.ejs
-    response.render('singlesighting', sighting);
+    // check if index exists
+    if (index <= data.sightings.length && index > 0) {
+      //  only 1 obj(sightings[index]) is parsed to sightings.ejs
+      response.render('singlesighting', sighting);
+    } else {
+      response.status(400).send('Invalid Sightings');
+    }
   });
 };
 
 // CB to handle addition of sighting
 const addSightingSubmission = (request, response) => {
-// Add new sighting data in request.body to sightings array in data.json.
+  // Add new sighting data in request.body to sightings array in data.json.
   add('data.json', 'sightings', request.body, (err) => {
     if (err) {
       response.status(500).send('DB write error.');
@@ -51,8 +59,9 @@ const addSightingSubmission = (request, response) => {
 
 // CB to render sighting submission page
 const renderSightingSubmission = (request, response) => {
-  response.render('submitsighting');
-};
+  read('data.json', (err, data) => {
+    response.render('submitsighting');
+  }); };
 
 // CB to render page for editing current data
 const renderEditPage = (request, response) => {
@@ -108,13 +117,17 @@ const sortSightingByShapes = (request, response) => {
   let results = [];
   read('data.json', (err, data) => {
     const { sightings } = data;
-    console.log('data: ', data);
+    // console.log('data: ', data);
     // console.log('sightings: ', sightings);
     const { shape } = request.params;
     results = sightings.filter((sighting) => sighting.shape.toLowerCase() === shape);
-    let resultsObj = { results };
+    // create obj to be passed to ejs to be rendered
+    let obj = { };
+    // pass different sets of data into obj
+    obj.results = results;
+    // obj.sightings = sightings;
     // console.log('results: ', results);
-    response.render('copysightingsbyshape', { data, resultsObj });
+    response.render('sightingsbyshape', { obj, sightings });
   });
 };
 app.get('/', getSightingsIndex);

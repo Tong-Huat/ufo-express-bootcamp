@@ -3,33 +3,37 @@
   <h1>Edit Sighting</h1>
   <div class="container">
     <form action="/sighting/<%= sighting.index %>?_method=PUT" method="POST">
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="text" class="form-label">Text</label>
         <textarea class="form-control" name="text" rows="3"><%= sighting.text %></textarea>
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="date-time" class="form-label">Date & Time</label>
         <input type="text" class="form-control" name="date_time" value="<%= sighting.date_time %>">
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="city" class="form-label">City</label>
         <input type="text" class="form-control" name="city" value="<%= sighting.city %>" placeholder="Mountain Home">
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="state" class="form-label">State</label>
         <input type="text" class="form-control" name="state" value="<%= sighting.state %>" placeholder="Idaho">
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="shape" class="form-label">Shape</label>
         <input type="text" class="form-control" name="shape" value="<%= sighting.shape %>" placeholder="Sphere">
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="duration" class="form-label">Duration</label>
         <input type="text" class="form-control" name="duration" value="<%= sighting.duration %>" placeholder="2 mins">
       </div>
-      <div class="col-md-12 mb-3">
+      <div class="col-md-12 mb-3 submit-label">
         <label for="summary" class="form-label">Summary</label>
         <textarea class="form-control" name="summary" rows="3"><%= sighting.summary %></textarea>
+      </div>
+      <div class="col-md-12 mb-3 submit-label">
+        <label for="time_submitted" class="form-label">Submitted Date/Time</label>
+        <input disabled type="text" class="form-control" name="time_submitted" value="<%= sighting.time_submitted %>  ">
       </div>
       <div class="col-md-12">
         <input type="submit" value="Submit">

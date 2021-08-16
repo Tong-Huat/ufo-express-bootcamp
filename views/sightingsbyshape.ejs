@@ -1,28 +1,36 @@
 <%- include('header', {title: `Sightings by Shapes`}); -%>
 
   <h1>
-    <%= results[0].shape %>
+    <%= obj.results[0].shape %>
   </h1>
-
   <table class="table table-striped table-sm table-responsive-md">
     <thead style="text-align: center;">
-      <tr>
+      <tr class="thead">
         <th scope="col">Report</th>
         <th scope="col">Summary</th>
       </tr>
     </thead>
     <tbody>
       <!-- Create an row for each sighting -->
-      <% for (let i=0; i < results.length; i +=1) {%>
-        <tr class="shape-text">
-          <th scope="row" style="text-align: center;"" class=" theader">
-            <%= i +1 %>
-          </th>
-          <td class="shape-report">
-            <%= results[i].text %>
-          </td>
-        </tr>
-        <% }; %>
+      <% for (let i=0; i < obj.results.length; i +=1) {%>
+
+        <% for (let j=0; j < sightings.length; j +=1) { %>
+          <% if (sightings[j].summary===obj.results[i].summary) { %>
+            <div class="outer">
+              <tr class="shape-text">
+                <th scope="row" style="text-align: center;"" class=" theader">
+                  <%= j +1 %>
+                </th>
+                <td class="shape-report tdata">
+                  <a href="<%= `/sighting/${j + 1}` %>">
+                    <%= obj.results[i].summary %>
+                  </a>
+                </td>
+              </tr>
+              <% }; %>
+                <% }; %>
+            </div>
+            <% }; %>
     </tbody>
   </table>
 
