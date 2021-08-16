@@ -7,6 +7,8 @@ import methodOverride from 'method-override';
 // eslint-disable-next-line import/no-unresolved
 import { read, add, write } from './jsonFileStorage.js';
 
+const PORT = process.argv[2];
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -147,4 +149,4 @@ app.get('/sighting/:index/edit', renderEditPage);
 app.delete('/sighting/:index', deleteSighting);
 app.get('/shapes', listOfShapesSighted);
 app.get('/shapes/:shape', sortSightingByShapes);
-app.listen(3004);
+app.listen(PORT);
